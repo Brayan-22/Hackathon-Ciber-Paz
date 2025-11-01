@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
-  "name": "Accesibilidad Web Universal",
-  "description": "Mejora la accesibilidad de cualquier sitio web con herramientas visuales, de navegaci\u00f3n y voz.",
+  "name": "Ukumari",
+  "description": "Mejora la accesibilidad de cualquier sitio web con herramientas visuales, de navegacion y voz.",
   "version": "1.0.0",
   "permissions": [
     "storage",
@@ -15,9 +15,7 @@
   "action": {
     "default_popup": "popup/popup.html",
     "default_icon": {
-      "16": "icons/16.png",
-      "48": "icons/48.png",
-      "128": "icons/128.png"
+      "128": "icons/UkumariLogo.jpg"
     }
   },
   "background": {
@@ -51,7 +49,9 @@
         "content/styles/*.css",
         "utils/*.js"
       ],
-      "matches": ["<all_urls>"]
+      "matches": [
+        "<all_urls>"
+      ]
     },
     {
       "resources": [

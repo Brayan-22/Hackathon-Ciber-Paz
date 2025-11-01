@@ -38,6 +38,7 @@
   window.__WAU_INJECTOR__?.injectSkipToContent();
 
   let settings = await getSettings();
+  console.log('[WAU] Configuración cargada:', settings);
 
   // Apply font scale
   const applyFontScale = (scale) => {
@@ -66,13 +67,35 @@
 
   // TTS on focus - improved with better element text extraction for ALL elements
   let ttsEnabled = !!settings.ttsEnabled;
+  console.log('[WAU] TTS habilitado en configuración:', ttsEnabled);
+
+  // Exposar función de prueba para debugging
+  window.WAU_DEBUG = {
+    testTTS: (text) => {
+      console.log('[WAU DEBUG] Probando TTS con texto:', text);
+      console.log('[WAU DEBUG] ttsEnabled:', ttsEnabled);
+      TTS.speak(text || 'Prueba de text to speech');
+    },
+    enableTTS: () => {
+      ttsEnabled = true;
+      console.log('[WAU DEBUG] TTS activado manualmente');
+    },
+    getTTSStatus: () => {
+      console.log('[WAU DEBUG] Estado TTS:', {
+        ttsEnabled,
+        settings: settings.ttsEnabled,
+        ttsReady: TTS.isReady()
+      });
+    }
+  };
+
   let lastSpokenText = '';
   let lastSpokenTime = 0;
-  
+
   // Helper function to extract meaningful text from any element
   function extractTextFromElement(el) {
     let text = '';
-    
+
     // Priority 1: ARIA labels (most specific)
     if (el.getAttribute('aria-label')) {
       text = el.getAttribute('aria-label');
@@ -111,7 +134,7 @@
         const typeName = typeMap[el.type] || el.type;
         text = `${text}, campo de ${typeName}`;
       }
-    } 
+    }
     else if (el.tagName === 'SELECT') {
       const label = el.id ? document.querySelector(`label[for="${el.id}"]`) : null;
       if (label) {
@@ -132,14 +155,14 @@
       if (!text || text === 'Botón') {
         text = 'Botón';
       }
-    } 
+    }
     else if (el.tagName === 'A') {
       text = el.innerText || el.textContent || 'Enlace';
       // Only add "enlace" suffix if not already in text
       if (text && !text.toLowerCase().includes('enlace')) {
         text = `${text}, enlace`;
       }
-    } 
+    }
     else if (el.tagName === 'IMG') {
       text = el.alt || 'Imagen sin descripción';
     }
@@ -205,16 +228,27 @@
     else {
       text = el.innerText || el.textContent || '';
     }
-    
+
     return text.trim();
   }
-  
+
   document.addEventListener('focusin', async (e) => {
-    if (!ttsEnabled) return;
-    
     const el = e.target;
+
+    console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+    console.log('[WAU FOCUSIN] 🎯 Elemento enfocado:', el.tagName, el.className || '(sin clase)');
+    console.log('[WAU FOCUSIN] 📊 ttsEnabled:', ttsEnabled);
+    console.log('[WAU FOCUSIN] 📝 ID:', el.id || '(sin id)');
+
+    if (!ttsEnabled) {
+      console.log('[WAU FOCUSIN] ⚠️ TTS DESACTIVADO - No se leerá nada');
+      console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+      return;
+    }
+
     let text = extractTextFromElement(el);
-    
+    console.log('[WAU FOCUSIN] 📖 Texto extraído:', text || '(vacío)');
+
     // If no text found, try to describe the element
     if (!text && el.tagName) {
       const tagMap = {
@@ -230,26 +264,40 @@
         'MAIN': 'Contenido principal'
       };
       text = tagMap[el.tagName] || el.tagName.toLowerCase();
+      console.log('[WAU FOCUSIN] 🏷️ Usando descripción de elemento:', text);
     }
-    
+
     // Final fallback
     if (!text) {
       text = 'Elemento enfocado';
+      console.log('[WAU FOCUSIN] ⚠️ Usando texto por defecto');
     }
-    
+
     // Avoid repeating the same text too quickly (debounce)
     const now = Date.now();
-    if (text && (text !== lastSpokenText || (now - lastSpokenTime) > 1000)) {
+    const timeSinceLastSpoken = now - lastSpokenTime;
+    const isSameText = text === lastSpokenText;
+
+    console.log('[WAU FOCUSIN] ⏱️ Tiempo desde último:', timeSinceLastSpoken + 'ms');
+    console.log('[WAU FOCUSIN] 🔄 Es el mismo texto:', isSameText);
+
+    if (text && (text !== lastSpokenText || timeSinceLastSpoken > 1000)) {
       lastSpokenText = text;
       lastSpokenTime = now;
-      
+
       // Limit text length
       if (text.length > 200) {
         text = text.substring(0, 200) + '...';
+        console.log('[WAU FOCUSIN] ✂️ Texto truncado a 200 caracteres');
       }
-      
-      console.log('[WAU] Leyendo elemento enfocado:', text.substring(0, 50));
+
+      console.log('[WAU FOCUSIN] ✅ LLAMANDO A TTS.speak() con:', text);
+      console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+
       await TTS.speak(text);
+    } else {
+      console.log('[WAU FOCUSIN] ⏭️ IGNORADO (texto repetido o muy reciente)');
+      console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
     }
   }, true);
 
@@ -265,7 +313,7 @@
       onToggleTTS: () => {
         ttsEnabled = !ttsEnabled;
         TTS.stop();
-        
+
         // Show visual feedback
         const feedback = document.createElement('div');
         feedback.textContent = ttsEnabled ? '🔊 TTS Activado' : '🔇 TTS Desactivado';
@@ -286,11 +334,11 @@
         `;
         document.body.appendChild(feedback);
         setTimeout(() => feedback.remove(), 2000);
-        
+
         // Update settings
         settings.ttsEnabled = ttsEnabled;
         setSettings(settings);
-        
+
         console.log('[WAU] TTS', ttsEnabled ? 'activado' : 'desactivado');
       },
       onIncreaseFont: () => {

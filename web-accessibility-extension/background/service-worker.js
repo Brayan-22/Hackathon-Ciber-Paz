@@ -40,13 +40,35 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
 
   if (msg?.type === "tts:speak") {
     // Fallback TTS using chrome.tts if speechSynthesis fails in page context
+    console.log('[Background] Recibiendo solicitud TTS para:', msg.text?.substring(0, 50));
     try {
       chrome.tts.speak(msg.text || "", {
         lang: msg.lang || "es-ES",
         rate: 1.0,
         enqueue: false
-      }, () => sendResponse({ ok: true }));
+      }, () => {
+        if (chrome.runtime.lastError) {
+          console.error('[Background] Error en chrome.tts:', chrome.runtime.lastError);
+          sendResponse({ ok: false, error: chrome.runtime.lastError.message });
+        } else {
+          console.log('[Background] ✅ chrome.tts speak ejecutado correctamente');
+          sendResponse({ ok: true });
+        }
+      });
     } catch (e) {
+      console.error('[Background] Exception en tts:speak:', e);
+      sendResponse({ ok: false, error: e?.message });
+    }
+    return true;
+  }
+
+  if (msg?.type === "tts:stop") {
+    console.log('[Background] Deteniendo TTS');
+    try {
+      chrome.tts.stop();
+      sendResponse({ ok: true });
+    } catch (e) {
+      console.error('[Background] Error en tts:stop:', e);
       sendResponse({ ok: false, error: e?.message });
     }
     return true;

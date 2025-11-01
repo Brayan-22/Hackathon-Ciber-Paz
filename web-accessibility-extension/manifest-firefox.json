@@ -1,0 +1,66 @@
+{
+  "manifest_version": 2,
+  "name": "Accesibilidad Web Universal",
+  "description": "Mejora la accesibilidad de cualquier sitio web con herramientas visuales, de navegaci\u00f3n y voz.",
+  "version": "1.0.0",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "<all_urls>",
+    "tts"
+  ],
+  "background": {
+    "scripts": [
+      "background/service-worker.js"
+    ]
+  },
+  "browser_action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "icons/16.png",
+      "48": "icons/48.png",
+      "128": "icons/128.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "utils/storage.js",
+        "utils/tts.js",
+        "utils/keyboard-nav.js",
+        "content/dom-injector.js",
+        "content/content-script.js",
+        "content/floating-widget.js"
+      ],
+      "css": [
+        "content/styles/themes.css",
+        "content/styles/links-highlight.css",
+        "content/styles/floating-widget.css"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "options_ui": {
+    "page": "options/options.html",
+    "open_in_tab": true
+  },
+  "web_accessible_resources": [
+    "content/styles/*.css",
+    "utils/*.js"
+  ],
+  "icons": {
+    "16": "icons/16.png",
+    "48": "icons/48.png",
+    "128": "icons/128.png"
+  },
+  "default_locale": "es",
+  "applications": {
+    "gecko": {
+      "id": "accesibilidad-web-universal@example.com",
+      "strict_min_version": "91.0"
+    }
+  }
+}

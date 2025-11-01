@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Accesibilidad</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <header aria-live="polite" aria-atomic="true">
+    <h1 id="title">Accesibilidad</h1>
+  </header>
+
+  <main>
+    <section aria-labelledby="sec-typography">
+      <h2 id="sec-typography">Tipografía</h2>
+      <label for="font-scale">Tamaño base (rem)</label>
+      <input id="font-scale" type="range" min="0.8" max="2.0" step="0.1" />
+      <output id="font-scale-out" for="font-scale"></output>
+    </section>
+
+    <section aria-labelledby="sec-theme">
+      <h2 id="sec-theme">Tema</h2>
+      <select id="color-theme" aria-label="Tema de color">
+        <option value="default">Predeterminado</option>
+        <option value="protanopia">Protanopia</option>
+        <option value="deuteranopia">Deuteranopia</option>
+        <option value="tritanopia">Tritanopia</option>
+        <option value="high-contrast">Alto contraste</option>
+      </select>
+    </section>
+
+    <section aria-labelledby="sec-features">
+      <h2 id="sec-features">Características</h2>
+      <label><input id="highlight-links" type="checkbox" /> Resaltar enlaces</label><br/>
+      <label><input id="tts-enabled" type="checkbox" /> Lectura por foco (TTS)</label><br/>
+      <label><input id="keyboard-nav" type="checkbox" /> Navegación por teclado</label>
+    </section>
+
+    <nav aria-label="Acciones">
+      <button id="open-options">Opciones…</button>
+    </nav>
+  </main>
+
+  <script src="popup.js" defer></script>
+</body>
+</html>

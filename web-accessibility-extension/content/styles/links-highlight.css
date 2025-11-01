@@ -1,0 +1,9 @@
+/* content/styles/links-highlight.css */
+html[data-highlight-links="1"] a {
+  outline: 2px dashed var(--wau-outline) !important;
+  text-decoration: underline !important;
+}
+html[data-highlight-links="1"] a:focus {
+  background: #ff0;
+  color: #000;
+}

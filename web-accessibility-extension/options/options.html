@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Opciones • Accesibilidad Web Universal</title>
+  <link rel="stylesheet" href="options.css" />
+</head>
+<body>
+  <main>
+    <h1>Opciones</h1>
+    <form id="form" aria-describedby="desc">
+      <p id="desc">Configura atajos de teclado y preferencias avanzadas.</p>
+      <fieldset>
+        <legend>Atajos</legend>
+        <label>Alternar TTS <input id="shortcut-tts" type="text" placeholder="Alt+T" /></label><br/>
+        <label>Aumentar fuente <input id="shortcut-plus" type="text" placeholder="Alt+Plus" /></label><br/>
+        <label>Disminuir fuente <input id="shortcut-minus" type="text" placeholder="Alt+Minus" /></label>
+      </fieldset>
+      <fieldset>
+        <legend>Preferencias</legend>
+        <label><input id="pref-telemetry" type="checkbox" /> Telemetría anónima (opcional)</label>
+      </fieldset>
+      <div role="status" id="status" aria-live="polite"></div>
+      <button id="save" type="submit">Guardar</button>
+    </form>
+  </main>
+  <script src="options.js" defer></script>
+</body>
+</html>

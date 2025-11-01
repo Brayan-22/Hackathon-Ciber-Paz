@@ -1,0 +1,28 @@
+/* content/styles/themes.css */
+:root { --wau-outline: #ff9900; }
+
+/* Themes */
+body[data-theme="high-contrast"] {
+  background-color: black !important;
+  color: white !important;
+}
+/* Example filters for color vision deficiencies (simplified) */
+body[data-theme="protanopia"]   { filter: saturate(0.8) hue-rotate(15deg); }
+body[data-theme="deuteranopia"] { filter: saturate(0.8) hue-rotate(-15deg); }
+body[data-theme="tritanopia"]   { filter: saturate(0.8) hue-rotate(135deg); }
+
+/* Animations */
+@keyframes wau-fade-in-out {
+  0% { opacity: 0; transform: translateY(-10px); }
+  15% { opacity: 1; transform: translateY(0); }
+  85% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-10px); }
+}
+
+/* Respect user preferences */
+@media (prefers-reduced-motion: reduce) {
+  * { scroll-behavior: auto !important; animation: none !important; }
+}
+@media (prefers-contrast: more) {
+  :root { --wau-outline: #ffff00; }
+}

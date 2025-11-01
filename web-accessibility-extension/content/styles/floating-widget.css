@@ -1,0 +1,386 @@
+/* content/styles/floating-widget.css */
+/* Floating Accessibility Widget Styles */
+
+#wau-floating-widget {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2147483646;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+#wau-floating-widget:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+#wau-floating-widget:focus {
+  outline: 3px solid #ff9900;
+  outline-offset: 2px;
+}
+
+#wau-floating-widget:active {
+  transform: scale(0.95);
+}
+
+#wau-floating-widget svg {
+  width: 28px;
+  height: 28px;
+}
+
+/* Floating Panel */
+#wau-floating-panel {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  width: 340px;
+  max-height: 600px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  z-index: 2147483647;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  font-size: 14px;
+  color: #333;
+}
+
+#wau-floating-panel * {
+  box-sizing: border-box;
+}
+
+/* Panel Header */
+.wau-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.wau-panel-header h2 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+#wau-close-panel {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: background 0.2s ease;
+}
+
+#wau-close-panel:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+#wau-close-panel:focus {
+  outline: 2px solid white;
+  outline-offset: 2px;
+}
+
+/* Panel Content */
+.wau-panel-content {
+  padding: 20px;
+  max-height: 520px;
+  overflow-y: auto;
+}
+
+.wau-panel-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.wau-panel-content::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.wau-panel-content::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+.wau-panel-content::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Section */
+.wau-section {
+  margin-bottom: 24px;
+}
+
+.wau-section:last-child {
+  margin-bottom: 0;
+}
+
+.wau-section h3 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #667eea;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Font Controls */
+.wau-control-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.wau-control-group button {
+  flex: 1;
+  padding: 10px;
+  background: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.wau-control-group button:hover {
+  background: #667eea;
+  color: white;
+  border-color: #667eea;
+}
+
+.wau-control-group button:focus {
+  outline: 2px solid #667eea;
+  outline-offset: 2px;
+}
+
+.wau-control-group span {
+  flex: 0 0 auto;
+  min-width: 50px;
+  text-align: center;
+  font-weight: 600;
+  color: #667eea;
+}
+
+/* Slider */
+#wau-font-slider {
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: #e0e0e0;
+  outline: none;
+  -webkit-appearance: none;
+}
+
+#wau-font-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #667eea;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+#wau-font-slider::-webkit-slider-thumb:hover {
+  background: #764ba2;
+  transform: scale(1.2);
+}
+
+#wau-font-slider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #667eea;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+}
+
+#wau-font-slider::-moz-range-thumb:hover {
+  background: #764ba2;
+  transform: scale(1.2);
+}
+
+#wau-font-slider:focus::-webkit-slider-thumb {
+  outline: 2px solid #667eea;
+  outline-offset: 2px;
+}
+
+/* Select */
+#wau-theme-select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: white;
+  font-size: 14px;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+#wau-theme-select:hover {
+  border-color: #667eea;
+}
+
+#wau-theme-select:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* Checkbox Label */
+.wau-checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+  cursor: pointer;
+  user-select: none;
+}
+
+.wau-checkbox-label input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: #667eea;
+}
+
+.wau-checkbox-label span {
+  flex: 1;
+  font-size: 14px;
+}
+
+.wau-checkbox-label:hover span {
+  color: #667eea;
+}
+
+/* Buttons */
+.wau-btn-secondary {
+  width: 100%;
+  padding: 12px;
+  background: white;
+  border: 2px solid #667eea;
+  border-radius: 6px;
+  color: #667eea;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.wau-btn-secondary:hover {
+  background: #667eea;
+  color: white;
+}
+
+.wau-btn-secondary:focus {
+  outline: 2px solid #667eea;
+  outline-offset: 2px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  #wau-floating-panel {
+    right: 10px;
+    left: 10px;
+    width: auto;
+    bottom: 80px;
+  }
+
+  #wau-floating-widget {
+    bottom: 10px;
+    right: 10px;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  #wau-floating-widget {
+    border: 2px solid white;
+  }
+
+  #wau-floating-panel {
+    border: 2px solid #333;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  #wau-floating-panel {
+    background: #1e1e1e;
+    color: #e0e0e0;
+  }
+
+  .wau-panel-content::-webkit-scrollbar-track {
+    background: #2a2a2a;
+  }
+
+  .wau-control-group button {
+    background: #2a2a2a;
+    border-color: #444;
+    color: #e0e0e0;
+  }
+
+  #wau-theme-select {
+    background: #2a2a2a;
+    border-color: #444;
+    color: #e0e0e0;
+  }
+
+  .wau-btn-secondary {
+    background: #2a2a2a;
+    color: #e0e0e0;
+  }
+}
+
+/* Animation */
+@keyframes wau-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#wau-floating-panel {
+  animation: wau-slide-in 0.3s ease;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  #wau-floating-widget,
+  .wau-control-group button,
+  #wau-font-slider::-webkit-slider-thumb,
+  #wau-font-slider::-moz-range-thumb,
+  .wau-btn-secondary {
+    transition: none;
+  }
+
+  #wau-floating-panel {
+    animation: none;
+  }
+}

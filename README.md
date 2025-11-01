@@ -41,12 +41,12 @@
 - **Escape**: Cerrar panel flotante
 - Atajos personalizables desde opciones
 
-### � Persistencia y Sincronización
+### 💾 Persistencia y Sincronización
 - Configuración guardada en `chrome.storage.sync`
 - Sincronización entre dispositivos
 - Aplicación instantánea en todas las pestañas
 
-## �📁 Estructura del Proyecto
+## 📁 Estructura del Proyecto
 ```
 web-accessibility-extension/
 ├── manifest.json (Chrome MV3)
@@ -221,68 +221,7 @@ Rename-Item manifest.json manifest-firefox.json
 Rename-Item manifest-chrome.json manifest.json
 ```
 
-## 🐛 Solución de Problemas
-
-### El widget flotante no aparece
-- Verifica que la extensión esté habilitada
-- Recarga la página (F5)
-- Revisa la consola para errores (F12)
-
-### TTS no funciona o no se escucha al presionar Tab
-
-#### Causa 1: Permisos de Audio
-Los navegadores modernos requieren interacción del usuario antes de permitir audio automático.
-
-**Solución:**
-1. Si aparece la notificación "Haz clic para activar lectura por voz", haz clic en cualquier parte de la página
-2. La notificación desaparecerá y el TTS funcionará correctamente
-3. Solo necesitas hacer esto una vez por página
-
-#### Causa 2: TTS Desactivado
-Verifica que la lectura por voz esté activada.
-
-**Solución:**
-1. Presiona `Alt+T` para alternar TTS
-2. Debe aparecer "🔊 TTS Activado" (fondo verde)
-3. También puedes activarlo desde el widget flotante
-
-#### Causa 3: No hay Voces Disponibles
-El navegador puede no tener voces cargadas.
-
-**Solución:**
-1. Abre la consola (F12) y busca: `[WAU] TTS inicializado correctamente`
-2. Si dice "TTS no disponible", verifica:
-   - `chrome://settings/languages` (Chrome)
-   - Configuración de voz del sistema operativo
-3. Instala voces adicionales en tu sistema operativo
-
-#### Causa 4: Navegador sin Soporte
-Safari o navegadores antiguos pueden tener soporte limitado.
-
-**Solución:**
-1. Usa Chrome, Edge, Firefox o Brave (versiones recientes)
-2. La extensión intentará usar `chrome.tts` como fallback
-
-#### Debugging
-Abre la consola del navegador (F12) y busca:
-- ✅ `[WAU] Inicializando Text-to-Speech...`
-- ✅ `[WAU] TTS inicializado correctamente`
-- ✅ `[WAU] Leyendo elemento enfocado: ...`
-- ❌ Si ves errores, reporta el problema
-
-Para pruebas detalladas, consulta: `TEST-TTS.md`
-
-### Los estilos no se aplican
-- Limpia la caché del navegador
-- Recarga la extensión en `chrome://extensions`
-- Verifica que no haya conflictos con otras extensiones
-
-### Los atajos de teclado no funcionan
-- Verifica la configuración en Opciones
-- Comprueba que no haya conflictos con atajos del sistema
-- Algunos sitios pueden bloquear eventos de teclado
-
-## � Privacidad y Seguridad
+## 🔒 Privacidad y Seguridad
 
 - ✅ **Sin rastreo personal**: No recopilamos datos de usuario
 - ✅ **Datos locales**: Configuración guardada solo en `chrome.storage.sync`
@@ -319,3 +258,6 @@ Para reportar problemas o sugerir mejoras:
 
 Hecho con ❤️ para mejorar la accesibilidad web y cumplir con WCAG 2.2 AA.
 **¡La web debe ser accesible para todos! 🌐♿**
+Grupo Gludsito
+Participacion Hackathon Ciber Paz
+Puedes encontrar la extension como Ukumari

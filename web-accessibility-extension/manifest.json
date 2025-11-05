@@ -6,7 +6,6 @@
   "permissions": [
     "storage",
     "activeTab",
-    "scripting",
     "tts"
   ],
   "host_permissions": [
@@ -51,7 +50,9 @@
         "content/styles/*.css",
         "utils/*.js"
       ],
-      "matches": ["<all_urls>"]
+      "matches": [
+        "<all_urls>"
+      ]
     },
     {
       "resources": [

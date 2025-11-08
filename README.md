@@ -2,7 +2,16 @@
 
 **Objetivo:** Proveer una herramienta accesible, confiable y extensible que mejore la accesibilidad en cualquier sitio web, cumpliendo con **WCAG 2.2 AA**, y soportando **Chrome (MV3)** y **Firefox (MV2 quirks)**.
 
-🌐 **Sitio Web Oficial:** [https://ukumari-web.netlify.app/](https://ukumari-web.netlify.app/)
+---
+
+## 🔗 Enlaces Importantes
+
+| 🌐 Sitio Web | 🎥 Video Demo | 📊 Presentación |
+|:---:|:---:|:---:|
+| [**Visita Ukumari**](https://ukumari-web.netlify.app/) | [**Ver Demo Completa**](https://drive.google.com/file/d/15gHSMlX3qzZ3WAI-qzvW6O3NymuCgKqg/view?usp=drive_link) | [**Ver Presentación**](https://docs.google.com/presentation/d/1bG-kZ4hdDhZ7lEAGFehnL_WsArrj-VOK/edit?usp=drive_link&ouid=111134453392080650937&rtpof=true&sd=true) |
+| Sitio oficial del proyecto | Video de demostración en Google Drive | Presentación oficial en Google Docs |
+
+---
 
 ## ✨ Características Principales
 
@@ -235,11 +244,6 @@ Rename-Item manifest-chrome.json manifest.json
 
 Este proyecto está diseñado para hackathons y fines educativos. 
 
-### Para contribuir:
-1. Fork del repositorio
-2. Crea una rama para tu feature
-3. Implementa mejoras
-4. Envía un Pull Request
 
 ### Ideas para mejoras futuras:
 - [ ] Modo lector (simplificar diseño de páginas)
@@ -249,20 +253,6 @@ Este proyecto está diseñado para hackathons y fines educativos.
 - [ ] Exportar/importar configuración
 - [ ] Estadísticas de uso
 - [ ] Integración con screen readers nativos
-
-## 📚 Recursos y Documentación
-
-### 🌐 Sitio Web Oficial
-Visita la página oficial de Ukumari para más información:
-[https://ukumari-web.netlify.app/](https://ukumari-web.netlify.app/)
-
-### 🎥 Video de Demostración
-Mira el video completo de demostración de la extensión:
-[Ver Video en Google Drive](https://drive.google.com/file/d/15gHSMlX3qzZ3WAI-qzvW6O3NymuCgKqg/view?usp=drive_link)
-
-### 📊 Presentación del Proyecto
-Consulta la presentación oficial del proyecto:
-[Ver Presentación en Google Docs](https://docs.google.com/presentation/d/1bG-kZ4hdDhZ7lEAGFehnL_WsArrj-VOK/edit?usp=drive_link&ouid=111134453392080650937&rtpof=true&sd=true)
 
 ## 📞 Soporte
 

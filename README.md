@@ -9,7 +9,7 @@
 | 🌐 Sitio Web | 🎥 Video Demo | 📊 Presentación |
 |:---:|:---:|:---:|
 | [**Visita Ukumari**](https://ukumari-web.netlify.app/) | [**Ver Demo Completa**](https://drive.google.com/file/d/15gHSMlX3qzZ3WAI-qzvW6O3NymuCgKqg/view?usp=drive_link) | [**Ver Presentación**](https://docs.google.com/presentation/d/1bG-kZ4hdDhZ7lEAGFehnL_WsArrj-VOK/edit?usp=drive_link&ouid=111134453392080650937&rtpof=true&sd=true) |
-| Sitio oficial del proyecto | Video de demostración en Google Drive | Presentación oficial en Google Docs |
+| Sitio oficial del proyecto | Video de demostración | Presentación oficial |
 
 ---
 
